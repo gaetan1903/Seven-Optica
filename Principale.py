@@ -4,6 +4,7 @@ from tkinter.messagebox import *
 import hashlib
 import mysql.connector
 
+
 class Auth:
     def __init__(self):     
         self.root = Tk()
@@ -30,7 +31,6 @@ class Auth:
         self.font14 = Font(family='Arial', size=14)
 
 
-
     def __corps__(self):
         Label(self.root, image = self.logo).pack(pady=5)
         Label(self.root, bg ='white').pack(pady=3)
@@ -54,7 +54,10 @@ class Auth:
             self.cursor.execute("SELECT Password FROM personnel WHERE User = %s;", (self.user.get(), ))
 
             if self.cursor.fetchone()[0] == hashlib.sha1(self.password.get().encode()).hexdigest():
-                import principal 
+                self.root.quit()
+                self.root.destroy()
+                #  exec(open("./principal.py").read())  #  lance un autre fichier
+                Fenetre()
 
             else:
                 self.notification.config(text="Mot de passe incorrecte")
@@ -67,6 +70,11 @@ class Auth:
         
     def __final__(self):
         self.root.mainloop()
+
+
+
+class FenPrincipal:
+    
 
 
 
