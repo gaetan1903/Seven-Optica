@@ -57,7 +57,7 @@ class Auth:
                 self.root.quit()
                 self.root.destroy()
                 #  exec(open("./principal.py").read())  #  lance un autre fichier
-                Fenetre()
+                Fenetre(self.user.get())
 
             else:
                 self.notification.config(text="Mot de passe incorrecte")
@@ -72,8 +72,13 @@ class Auth:
         self.root.mainloop()
 
 
+class Fenetre:
+    def __init__(self, user):
+        self.user = user 
+
 
 class FenPrincipal:
+    fen = Fenetre()
     
 
 
