@@ -4,6 +4,7 @@ from tkinter.messagebox import *
 import hashlib
 import mysql.connector
 
+user = ''
 
 class Auth:
     def __init__(self):     
@@ -56,8 +57,9 @@ class Auth:
             if self.cursor.fetchone()[0] == hashlib.sha1(self.password.get().encode()).hexdigest():
                 self.root.quit()
                 self.root.destroy()
+                self.connexion.close()
                 #  exec(open("./principal.py").read())  #  lance un autre fichier
-                Fenetre(self.user.get())
+                fenPrincipal(self.user.get())
 
             else:
                 self.notification.config(text="Mot de passe incorrecte")
@@ -74,11 +76,28 @@ class Auth:
 
 class Fenetre:
     def __init__(self, user):
-        self.user = user 
+        self.user = user
+        self.root = Tk()
+        self.root.title('Seven Optica: Logiciel de Vente')
+        self.root.geometry('1200x660+75+20')
+        try:
+            self.connexion = mysql.connector.connect(host="localhost",user="gaetan",password="gaetan", database="optica")
+        except:
+            self.root.withdraw()
+            showerror('Erreur de serveur base de donnée', "Veuillez allumer le serveur de base de donnée local")
+            exit()
+       
 
 
-class FenPrincipal:
-    fen = Fenetre()
+    def __final__(self):
+        self.root.mainloop()
+
+        
+
+
+def fenPrincipal(user):
+    fen = Fenetre(user)
+    fen.__final__()
     
 
 
