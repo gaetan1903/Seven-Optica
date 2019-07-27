@@ -80,13 +80,8 @@ class Fenetre:
         self.root = Tk()
         self.root.title('Seven Optica: Logiciel de Vente')
         self.root.geometry('1200x660+75+20')
-        try:
-            self.connexion = mysql.connector.connect(host="localhost",user="gaetan",password="gaetan", database="optica")
-        except:
-            self.root.withdraw()
-            showerror('Erreur de serveur base de donnée', "Veuillez allumer le serveur de base de donnée local")
-            exit()
-       
+        self.connexion = mysql.connector.connect(host="localhost",user="gaetan",password="gaetan", database="optica")
+        self.cursor = self.connexion.cursor()
 
 
     def __final__(self):
@@ -99,7 +94,6 @@ def fenPrincipal(user):
     fen = Fenetre(user)
     fen.__final__()
     
-
 
 
 if __name__ == '__main__':
