@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter.font import *
 from tkinter.messagebox import *
-import hashlib
-import mysql.connector
+import hashlib, mysql.connector, random
 
 user = ''
 
@@ -88,6 +87,8 @@ class Fenetre:
         self.root.config(bg='white')
         self.connexion = mysql.connector.connect(host="localhost",user="gaetan",password="gaetan", database="optica")
         self.cursor = self.connexion.cursor()
+        self.index_monture = ('Code', 'Reference', 'Couleur', 'Forme', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
+        self.index_verre = ('Code', 'Type', 'Traitement', 'Degré', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
         self.menuTop()
 
 
@@ -246,53 +247,96 @@ class Fenetre:
         
 
     def stock(self, event):
+        colors = ('teal', '#D00B21', 'purple')
+        color = colors[random.randint(0,2)]
         self.root.withdraw()
         self.fenStock = Toplevel(self.root)
         self.fenStock.title('Stock')
-        self.fenStock.geometry('1200x650+12+50')
-        head = Canvas(self.fenStock, width = 1210, height = 35, bg = 'teal', highlightthickness = 0)
+        self.fenStock.geometry('1200x650+30+25')
+        head = Canvas(self.fenStock, width = 1210, height = 35, bg = color, highlightthickness = 0)
         head.place(relx = -0.003 , rely = -0.003)
-        head_back = Canvas(self.fenStock, width = 75, height = 30, bg='teal', highlightthickness = 0)
+        head_back = Canvas(self.fenStock, width = 75, height = 30, bg = color, highlightthickness = 0)
         head_back.place(relx=0.001, rely = 0.003)
         head_back.create_image(15, 15, image = self.backIm)
         head_back.bind('<Button-1>', lambda f: self.backHome(self.fenStock))
 
+        '''
         newStock = Canvas(self.fenStock, width= 140, height = 140, cursor='hand2')
         newStock.create_image(70, 70, image=self.addIm)
         newStock.place(relx=0.08, rely=0.07)
-        
-        self.FrameStock = Frame(self.fenStock, width=1180, height = 253, bg='orange')
-        self.FrameStock.place(relx=0.001, rely=0.55)
+        '''
+        monture = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor ='hand1')
+        monture.create_text(100, 27, text='MONTURE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
+        monture.place(relx=0.2, rely=0.4)
+        monture.bind('<Button-1>', lambda f: self.montureStock(color))
+
+        verre = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor='hand1')
+        verre.create_text(100, 27, text='VERRE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
+        verre.place(relx=0.6, rely=0.4)
+        verre.bind('<Button-1>', lambda f: self.verreStock(color))
+
+        self.FrameStock = Frame(self.fenStock, width=1180, height = 253)
+        self.FrameStock.place(relx=0.001, rely=0.57)
         self.FrameStock.grid_propagate(0)
 
-        canvas = Canvas(self.FrameStock, width=1180, height = 255)
-        scroll_y = Scrollbar(self.FrameStock, orient="vertical", command=canvas.yview)
-        tab = Frame(canvas)
-        
-        self.numberLines = 50
-        self.numberColumns = 7
-        i = 0
-        index_monture = ('Code', 'Reference', 'Couleur', 'Forme', 'Nombre en Stock', 'Prix de Vente', "Prix d'achat")
-        index_verre = ('Code', 'Type', 'Traitement', 'Degré', 'Nombre en Stock', 'Prix de Vente', "Prix d'achat")
+        self.index_monture = ('Code', 'Reference', 'Couleur', 'Forme', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
+        self.index_verre = ('Code', 'Type', 'Traitement', 'Degré', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
 
+        self.stringGrid(self.index_monture, color)
+
+        
+
+    def montureStock(self, color):
+        self.canvas.destroy()
+        self.stringGrid(self.index_monture, color)
+
+
+    def verreStock(self, color):
+        self.canvas.destroy()
+        self.stringGrid(self.index_verre, color)
+
+
+    def stringGrid(self, index, color):
+        self.canvas = Canvas(self.FrameStock, width=1180, height = 255)
+        scroll_y = Scrollbar(self.FrameStock, orient="vertical", command=self.canvas.yview)
+        tab = Frame(self.canvas)
+        
+        self.numberLines = 10
+        self.numberColumns = 9
+        i = 0
         for i in range(self.numberLines+1):  
             for j in range(self.numberColumns):
-                if i < 1: 
-                    cell = Entry(tab, width=18, font=Font(family='Arial', weight='bold', size='12'), bg='teal', fg='white')
-                    #D00B21
-                    cell.insert(0, index_verre[j]) 
+                if i < 1:
+                    if j == 3:
+                        cell = Entry(tab, width=18, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell.insert(0, index[j])
+                    elif j > 5: 
+                        cell = Entry(tab, width=9, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell.insert(0, index[j])
+                    else:
+                        cell = Entry(tab, width=16, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell.insert(0, index[j])
                 else:
-                    cell = Entry(tab, width=18, font=self.arial12)
+                    if j==3:
+                        cell = Entry(tab, width=18, font=self.arial12)
+                    elif j>5:
+                        cell = Entry(tab, width=9, font=self.arial12)
+                    else:
+                        cell = Entry(tab, width=16, font=self.arial12)
                 
                 cell.grid(row = i, column = j)
             i = i + 1
 
-        canvas.create_window(0, 0, anchor='nw', window=tab)
-        canvas.update_idletasks()
-        canvas.configure(scrollregion=canvas.bbox('all'), yscrollcommand=scroll_y.set)
+        self.canvas.create_window(0, 0, anchor='nw', window=tab)
+        self.canvas.update_idletasks()
+        self.canvas.configure(scrollregion=self.canvas.bbox('all'), yscrollcommand=scroll_y.set)
                  
-        canvas.pack(fill='both', expand=True, side='left')
+        self.canvas.pack(fill='both', expand=True, side='left')
         scroll_y.pack(fill='y', side='right', padx=0)
+
+        footer = Canvas(self.fenStock, width=1200, height=20, highlightthickness=0, bg=color)
+        footer.place(relx=0, rely=0.97)
+
 
 
     def backHome(self, who):
