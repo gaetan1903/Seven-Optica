@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter.font import *
 from tkinter.messagebox import *
-import hashlib, mysql.connector, random
-
+import hashlib, mysql.connector, random, time
 user = ''
 
 
@@ -108,12 +107,13 @@ class Fenetre:
         self.stockIm = PhotoImage(file='image\gestion.png')
         self.backIm0 = PhotoImage(file='image\\back.png')
         self.backIm = self.backIm0.subsample(8, 8)
-        self.addIm0 = PhotoImage(file='image\\nouveau.png')
+        self.addIm0 = PhotoImage(file='image\\shop.png')
         self.addIm = self.addIm0.subsample(2, 2)
         self.arial20 = Font(family='Arial', size=20, slant=ITALIC, weight=BOLD)
         self.arial12 = Font(family='Arial', size=12, slant=ITALIC)
         self.arial24 = Font(family='Arial', size=24, slant=ITALIC, weight=BOLD)
         self.arial7 = Font(family='Arial', size=7, slant=ITALIC)
+        self.font_grid = Font(family='Arial', weight='bold', size='12')
     
 
     def menuTop(self):
@@ -198,6 +198,11 @@ class Fenetre:
         self.cadre.place(relx=0, rely = 0.105)
 
 
+    def fen_close(self,  fen):
+        fen.destroy()
+        self.root.deiconify()
+        
+
     def home(self, event):
         self.root.quit()
         self.root.destroy()
@@ -212,6 +217,7 @@ class Fenetre:
         self.fenVente = Toplevel(self.root)
         self.fenVente.title('Vente')
         self.fenVente.geometry('700x450+300+150')
+        self.fenVente.protocol("WM_DELETE_WINDOW", lambda : self.fen_close(self.fenVente))
         head = Canvas(self.fenVente, width = 800, height = 35, bg = 'teal')
         head.place(relx = -0.003 , rely = -0.003)
         head_back = Canvas(self.fenVente, width = 75, height = 35, bg='teal', highlightthickness = 0)
@@ -225,6 +231,7 @@ class Fenetre:
         self.fenFacture = Toplevel(self.root)
         self.fenFacture.title('Facturation')
         self.fenFacture.geometry('700x450+300+150')
+        self.fenFacture.protocol("WM_DELETE_WINDOW", lambda : self.fen_close(self.fenFacture))
         head = Canvas(self.fenFacture, width = 800, height = 35, bg = 'teal')
         head.place(relx = -0.003 , rely = -0.003)
         head_back = Canvas(self.fenFacture, width = 75, height = 35, bg='teal', highlightthickness = 0)
@@ -238,6 +245,7 @@ class Fenetre:
         self.fenHistorique = Toplevel(self.root)
         self.fenHistorique.title('Historique')
         self.fenHistorique.geometry('700x450+300+150')
+        self.fenHistorique.protocol("WM_DELETE_WINDOW", lambda : self.fen_close(self.historique))
         head = Canvas(self.fenHistorique, width = 800, height = 35, bg = 'teal')
         head.place(relx = -0.003 , rely = -0.003)
         head_back = Canvas(self.fenHistorique, width = 75, height = 35, bg='teal', highlightthickness = 0)
@@ -252,80 +260,108 @@ class Fenetre:
         self.root.withdraw()
         self.fenStock = Toplevel(self.root)
         self.fenStock.title('Stock')
-        self.fenStock.geometry('1200x650+30+25')
+        self.fenStock.geometry('1200x650+75+25')
+        self.fenStock.protocol("WM_DELETE_WINDOW", lambda : self.fen_close(self.fenStock))
         head = Canvas(self.fenStock, width = 1210, height = 35, bg = color, highlightthickness = 0)
         head.place(relx = -0.003 , rely = -0.003)
+        head.create_text(600, 17, text = '♦ Gerer le Stock ♦', fill= 'yellow', font=Font(family='Arial', size = 12))
+        head.create_image(1190, 17, image = self.addIm)
         head_back = Canvas(self.fenStock, width = 75, height = 30, bg = color, highlightthickness = 0)
-        head_back.place(relx=0.001, rely = 0.003)
+        head_back.place(relx=0.005, rely = 0.003)
         head_back.create_image(15, 15, image = self.backIm)
         head_back.bind('<Button-1>', lambda f: self.backHome(self.fenStock))
 
-        '''
-        newStock = Canvas(self.fenStock, width= 140, height = 140, cursor='hand2')
-        newStock.create_image(70, 70, image=self.addIm)
-        newStock.place(relx=0.08, rely=0.07)
-        '''
-        monture = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor ='hand1')
-        monture.create_text(100, 27, text='MONTURE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
-        monture.place(relx=0.2, rely=0.4)
-        monture.bind('<Button-1>', lambda f: self.montureStock(color))
+        newStock = Button(self.fenStock, text ='Nouveau Stock', width= 15, relief = RAISED, cursor='hand2', fg= 'white', bg = color, font = Font(family='Arial', size = 20, slant='italic'), command = self.nouveauStock)
+        newStock.place(relx=0.10, rely=0.15)
+        statStock = Button(self.fenStock, text ='Statistique Stock', width= 15, relief = RAISED, cursor='hand2', fg= 'white', bg = color, font = Font(family='Arial', size = 20, slant='italic'))
+        statStock.place(relx=0.375, rely=0.20)
+        reduireStock = Button(self.fenStock, text ='Reduire Stock', width= 15, relief = RAISED, cursor='hand2', fg= 'white', bg = color, font = Font(family='Arial', size = 20, slant='italic'))
+        reduireStock.place(relx=0.65, rely=0.15)
 
-        verre = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor='hand1')
-        verre.create_text(100, 27, text='VERRE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
-        verre.place(relx=0.6, rely=0.4)
-        verre.bind('<Button-1>', lambda f: self.verreStock(color))
+        self.montureBut = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor ='hand1', highlightthickness=2)
+        self.montureBut.create_text(100, 27, text='MONTURE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
+        self.montureBut.place(relx=0.2, rely=0.4)
+        self.montureBut.bind('<Button-1>', lambda f: self.montureStock(color))
+
+        self.verreBut = Canvas(self.fenStock, width=200, height=50, bg=color, relief ='flat', border = 2, cursor='hand1')
+        self.verreBut.create_text(100, 27, text='VERRE', font=Font(family='Arial', size = 14, weight='bold'), fill='white')
+        self.verreBut.place(relx=0.6, rely=0.4)
+        self.verreBut.bind('<Button-1>', lambda f: self.verreStock(color))
 
         self.FrameStock = Frame(self.fenStock, width=1180, height = 253)
         self.FrameStock.place(relx=0.001, rely=0.57)
         self.FrameStock.grid_propagate(0)
 
-        self.index_monture = ('Code', 'Reference', 'Couleur', 'Forme', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
-        self.index_verre = ('Code', 'Type', 'Traitement', 'Degré', 'Prix de Vente', "Prix d'achat", 'Quantité', 'Reservé', 'Disponible')
-
-        self.stringGrid(self.index_monture, color)
-
+        self.cursor.execute('select * from monture where quantite <> 0;')
+        data = self.cursor.fetchall()
+        self.stringGrid(self.index_monture, color, data)
         
 
+    def nouveauStock(self):
+        self.fenStock.withdraw()
+        self.fenStockAdd = Toplevel(self.root)
+        self.fenStockAdd.config(bg='white')
+        self.fenStockAdd.title('SEVEN OPTICA: Nouveau Produit')
+        self.fenStockAdd.geometry('600x400+200+100')
+
+
     def montureStock(self, color):
+        self.montureBut.config(cursor='wait')
+        self.cursor.execute('select * from monture where quantite <> 0;')
+        data = self.cursor.fetchall()
         self.canvas.destroy()
-        self.stringGrid(self.index_monture, color)
+        self.stringGrid(self.index_monture, color, data)
+        self.montureBut.config(cursor='hand1')
 
 
     def verreStock(self, color):
+        x = time.time()
+        self.verreBut.config(cursor='wait')
+        print('changement de curseur en: ', time.time() - x, ' seconde')
+        self.cursor.execute('select * from verre where quantite <> 0;')
+        print('finission base de donnée: ', time.time() - x, ' seconde')
+        data = self.cursor.fetchall()
+        print('extraction de base de donnée: ', time.time() - x, ' seconde')
         self.canvas.destroy()
-        self.stringGrid(self.index_verre, color)
+        self.stringGrid(self.index_verre, color, data)
+        print('fin de chargement: ', time.time() - x, ' seconde')
+        self.verreBut.config(cursor='hand1')
 
 
-    def stringGrid(self, index, color):
+    def stringGrid(self, index, color, data):
         self.canvas = Canvas(self.FrameStock, width=1180, height = 255)
         scroll_y = Scrollbar(self.FrameStock, orient="vertical", command=self.canvas.yview)
         tab = Frame(self.canvas)
         
-        self.numberLines = 10
+        self.numberLines = len(data) + 1
         self.numberColumns = 9
-        i = 0
-        for i in range(self.numberLines+1):  
+        for i in range(self.numberLines):  
             for j in range(self.numberColumns):
                 if i < 1:
                     if j == 3:
-                        cell = Entry(tab, width=18, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell = Entry(tab, width=18, font=self.font_grid, bg=color, fg='white', bd=2)
                         cell.insert(0, index[j])
                     elif j > 5: 
-                        cell = Entry(tab, width=9, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell = Entry(tab, width=9, font=self.font_grid, bg=color, fg='white', bd=2)
                         cell.insert(0, index[j])
                     else:
-                        cell = Entry(tab, width=16, font=Font(family='Arial', weight='bold', size='12'), bg=color, fg='white', bd=2)
+                        cell = Entry(tab, width=16, font=self.font_grid, bg=color, fg='white', bd=2)
                         cell.insert(0, index[j])
                 else:
                     if j==3:
                         cell = Entry(tab, width=18, font=self.arial12)
+                        cell.insert(0, data[i-1][j])
+                    elif j==4 or j==5:
+                        cell = Entry(tab, width=16, font=self.arial12)
+                        cell.insert(0, f"Ar {data[i-1][j]}")
                     elif j>5:
                         cell = Entry(tab, width=9, font=self.arial12)
+                        cell.insert(0, data[i-1][j])
                     else:
                         cell = Entry(tab, width=16, font=self.arial12)
+                        cell.insert(0, data[i-1][j])
                 
                 cell.grid(row = i, column = j)
-            i = i + 1
 
         self.canvas.create_window(0, 0, anchor='nw', window=tab)
         self.canvas.update_idletasks()
@@ -336,7 +372,6 @@ class Fenetre:
 
         footer = Canvas(self.fenStock, width=1200, height=20, highlightthickness=0, bg=color)
         footer.place(relx=0, rely=0.97)
-
 
 
     def backHome(self, who):
@@ -351,7 +386,6 @@ class Fenetre:
 def fenPrincipal(user):
     fen = Fenetre(user)
     fen.__final__()
-    
 
 
 if __name__ == '__main__':
