@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Logiciel de Vente : Seven Optica </title>
+<title>Seven Optica</title>
 <link rel="stylesheet" href="css/material-icon.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap0.min.css">
@@ -49,7 +49,6 @@
 <link rel="stylesheet" href="css/bootstrap0.min.css">
 
 <script type="text/javascript" src="/eel.js"></script>
-<style type="text/css">
 
 </style>
 </head> 
@@ -85,7 +84,7 @@
 													<input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" id="user" placeholder="Nom d'utilisateur" required="required">
 												</div>
 												<div class="form-group">
-													<input type="password" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" id="password" placeholder="Mot de passe" required="required">
+													<input type="password"  value="gaetan1903" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" id="password" placeholder="Mot de passe" required="required">
 												</div>
 												<div class="form-group">
 													<input type="button" onclick="authentification()"  style="border-radius: 25px !important;" class="btn btn-primary btn-block btn-lg" value="Se connecter">
@@ -114,9 +113,9 @@
 				<div class="col-lg-6">
 					<!--  Social -->
 					<ul class="social-media list-inline text-lg-right text-center margin-0px text-white">
-						<li class="list-inline-item"> <i class="fa fa-facebook" aria-hidden="true"></i></li>
-						<li class="list-inline-item"> <i class="fa fa-linkedin" aria-hidden="true"></i></li>
-						<li class="list-inline-item"> <i class="fa fa-github" aria-hidden="true"></i></li>
+						<li onclick="eel.ouvrir('facebook')();" class="list-inline-item"> <i class="fa fa-facebook" aria-hidden="true"></i></li>
+						<li onclick="eel.ouvrir('linkedin')();" class="list-inline-item"> <i class="fa fa-linkedin" aria-hidden="true"></i></li>
+						<li onclick="eel.ouvrir('github')();" class="list-inline-item"> <i class="fa fa-github" aria-hidden="true"></i></li>
 					</ul>
 					<!-- // Social -->
 				</div>

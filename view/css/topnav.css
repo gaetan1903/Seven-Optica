@@ -88,10 +88,10 @@ body{
     }
 	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
 		color: #fff !important;
-		background: #610f91;
+		background: #35065a !important;
 		padding-top: 8px !important;
 		padding-bottom: 10px !important;
-		margin-top: 5.4% !important;
+		margin-top: 5.2% !important;
 		vertical-align: middle;
                     border: none;
                     font-size: 16px;
@@ -101,7 +101,7 @@ body{
 	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
 		color: #fff;
 		outline: none;
-                    background: #610f91;
+                    background: #050008 !important;
                     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 	.navbar .navbar-right li:first-child a {
@@ -274,6 +274,6 @@ body{
 	
 	.ambn{
 		margin-bottom: 0% !important;
-		margin-top:-1% !important;
-		margin-left: 167% !important;
+		margin-top:-80% !important;
+		margin-left: 5% !important;
 	}

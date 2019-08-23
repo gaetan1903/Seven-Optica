@@ -1,8 +1,8 @@
-
+var usr ='' ;
 function authentification(){
         user = document.getElementById("user");
         password = document.getElementById("password");
-
+        usr = user.value;
         eel.auth(user.value, password.value)(print_return);
 }
 
@@ -21,10 +21,8 @@ function show(reponse){
 }
 
 function home(){
-    window.location = 'acceuil.html';
+    window.location = 'menu.html';
     
 };
 
-$(function() {
-    $('#nom_home').html('Hello world. Ce texte est affiché par jQuery.');
-  });
+
