@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven Optica</title>
+<link rel="stylesheet" href="css/material-icon.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap0.min.css">
+<link rel="stylesheet" href="css/topnav.css">
+<link rel="icon" href="image/home.png" type="image/png" sizes="16x16"> 
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/stylee.css">
+<link rel="stylesheet" href="css/modal_echec.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/controller.js"></script> 
+<script src="js/bootstrap.min.js"></script>
+
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+<link rel="stylesheet" type="text/css" href="css/modal.css">
+
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="css/bootstrap0.min.css">
+
+<script type="text/javascript" src="/eel.js"></script>
+
+</style>
+</head> 
+<body>
+<nav class="navbar navbar-default navbar-expand-lg navbar-light">
+	<div class="navbar-header d-flex col">
+		<a class="navbar-brand" ><i style="color:#888 !important;" class="fa fa-rss ambn"></i><b class="ti">Seven</b> <b>Optica</b></a>  		
+		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+
+</nav>
+
+
+<div class="site-wrap">
+	<section>
+		<div class="site-section bg-light" id="services-section">
+	  		<div class="container">
+	    			
+
+						<div class="">
+								<div class="modal-dialog modal-login">
+									<div class="modal-content">
+										<div class="modal-header">				
+											<h4 class="modal-title" style="font-weight: bold;">S'identifier</h4>
+										</div>
+										<div class="modal-body">
+											<form action="/examples/actions/confirmation.php" method="post">
+												<div class="form-group">
+													<input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" id="user" placeholder="Nom d'utilisateur" required="required">
+												</div>
+												<div class="form-group">
+													<input type="password"  value="gaetan1903" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" id="password" placeholder="Mot de passe" required="required">
+												</div>
+												<div class="form-group">
+													<input type="button" onclick="authentification()"  style="border-radius: 25px !important;" class="btn btn-primary btn-block btn-lg" value="Se connecter">
+												</div>
+												
+											</form>				
+										</div>
+									</div>
+								</div>
+							</div>     
+	      
+	      			
+	    		</div>
+	  	</div>
+	</section>
+</div> <!-- .site-wrap -->
+
+<footer class="layout-dark" >
+
+	<div class="copy-right" >
+		<div class="container padding-tb-8px">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copy-right-text text-lg-left text-center">Copyright 2019 | <span style="font-size:12px !important; color:#999;font-weight:bold;;"> Gaetan Jonathan</div>
+				</div>
+				<div class="col-lg-6">
+					<!--  Social -->
+					<ul class="social-media list-inline text-lg-right text-center margin-0px text-white">
+						<li onclick="eel.ouvrir('facebook')();" class="list-inline-item"> <i class="fa fa-facebook" aria-hidden="true"></i></li>
+						<li onclick="eel.ouvrir('linkedin')();" class="list-inline-item"> <i class="fa fa-linkedin" aria-hidden="true"></i></li>
+						<li onclick="eel.ouvrir('github')();" class="list-inline-item"> <i class="fa fa-github" aria-hidden="true"></i></li>
+					</ul>
+					<!-- // Social -->
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+<div id="Modal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				<h4 class="modal-title">Désolé!</h4>	
+			</div>
+			<div class="modal-body">
+				<p id='erreur' class="text-center"></p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>                                                        
