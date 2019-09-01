@@ -103,11 +103,29 @@ def ajouter_verre(types, traitement, degre, nombre, achat, vente):
     elif degre[0] == '(' and degre[-1] == ')':
         ref = ref + 's' + degre[1:-1].replace('-', 'm').replace('+', 'p')
 
+    try:
+        cursor.execute("""
+            INSERT INTO verre(Ref, Type_Verre, Traiter, Degre, Nombre_Stock, Prix_Achat,  Prix_Vente)
+             values(%s, %s, %s, %s, %s, %s, %s);
+        """, ((ref, types, traitement, degre, nombre, achat, vente)) )
+        liaison.commit()
+    except:
+        return False
+    else:
+        return True
+
+
+@eel.expose
+def all_verres():
+    liaison = model()
+    cursor = liaison.cursor()
+
     cursor.execute("""
-        INSERT INTO verre(Ref, Type_Verre, Traiter, Degre, Nombre_Stock, Prix_Achat,  Prix_Vente)
-         values(%s, %s, %s, %s, %s, %s, %s);
-    """, ((ref, types, traitement, degre, nombre, achat, vente)) )
-    liaison.commit()
-    return True
+        SELECT * FROM verre;
+    """)
+    verre = cursor.fetchall()
+    return verre
+
+
 
 eel.start('home.html', size=(1000, 600), position=(175, 75))

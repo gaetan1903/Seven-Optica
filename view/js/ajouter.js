@@ -4,5 +4,11 @@ function ajout(){
 
 
 function feed_ajout(response){
-  alert('success');
+  if (response == true){
+     alert('success');
+  }
+  else {
+    alert("erreur s'est produit");
+    window.location ="#"
+  }
 }

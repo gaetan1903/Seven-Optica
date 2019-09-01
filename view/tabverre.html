@@ -120,101 +120,90 @@
 	<section>
 		<div class="site-section bg-white" id="services-section" >
 
-                              <button onclick="window.location='tabverre.html'" class="btn btn-primary-success"style="display:inline; color: #610f91; font-family:'Poppins-Regular' "> Monture</button>
-                              <button onclick="window.location='tabmonture.html'" class="btn btn-primary-success"style="display:inline; color: #610f91; font-family:'Poppins-Regular'"> Verre</button>
-                              <div class="container">
-                                        <div class="table-wrapper">
-                                                  <div class="table-title">
-                                                            <div class="row">
-                                                                      <div class="col-sm-6">
-                                                                      <h2>Les  <b>Verres</b></h2>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                      <a href="#myModal2" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter</span></a>
-                                                                      <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>
-                                                            </div>
-                                                  </div>
-                                        </div>
+      <button onclick="window.location='tabverre.html'" class="btn btn-primary-success"style="display:inline; color: #610f91; font-family:'Poppins-Regular' "> Monture</button>
+      <button onclick="window.location='tabmonture.html'" class="btn btn-primary-success"style="display:inline; color: #610f91; font-family:'Poppins-Regular'"> Verre</button>
+      <div class="container">
+      <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Les  <b>Verres</b></h2>
+                </div>
+                <div class="col-sm-6">
+                  <a href="#myModal2" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter</span></a>
+                  <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>
+                </div>
+            </div>
+          </div>
 
-                                        <table class="table table-striped table-hover">
-                                                  <thead>
-                                                            <tr>
-                                                                      <th>
-                                                                                <span class="custom-checkbox">
-                                                                                          <input type="checkbox" id="selectAll">
-                                                                                          <label for="selectAll"></label>
-                                                                                </span>
-                                                                      </th>
-                                                                      <th>Types</th>
-                                                                      <th>Traitement</th>
-                                                                      <th>Dégrés</th>
-                                                                      <th>Nombres en stock</th>
-                                                                      <th>Prix d'achats</th>
-                                                                      <th>Prix de ventes</th>
-                                                                      <th>Modifier/Supprimer</th>
-                                                            </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                            <tr>
-                                                                      <td>
-                                                                                <span class="custom-checkbox">
-                                                                                          <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                                                          <label for="checkbox1"></label>
-                                                                                </span>
-                                                                      </td>
-                                                                      <td> </td>
-                                                                      <td></td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td>
-                                                                                <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                                      </td>
+  <table class="table table-striped table-hover">
+    <thead>
+	    <tr>
+	      <th>
+          <span class="custom-checkbox">
+            <input type="checkbox" id="selectAll">
+            <label for="selectAll"></label>
+          </span>
+	      </th>
+				<th>References</th>
+	      <th>Types</th>
+	      <th>Traitements</th>
+	      <th>Dégrés</th>
+	      <th>Quantités</th>
+				<th>Dispo</th>
+	      <th>Achats</th>
+	      <th>Ventes</th>
+	      <th>Gestion</th>
+	    </tr>
+    </thead>
+	  <tbody>
+	    <tr id="">
+        <td>
+	        <span class="custom-checkbox">
+	          <input type="checkbox" id="checkbox1" name="options[]" value="1">
+	          <label for="checkbox1"></label>
+	        </span>
+        </td>
+        <td id="reference" > </td>
+        <td id="type"> </td>
+        <td id="traitement" > </td>
+        <td id="degre"> </td>
+        <td id="quantite"> </td>
+				<td id="disponible"> </td>
+				<td id="achat"> </td>
+        <td id="vente"> </td>
+        <td>
+          <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+        </td>
 
-                                                            </tr>
-                                                            <tr>
-                                                                      <td>
-                                                                                <span class="custom-checkbox">
-                                                                                          <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                                                          <label for="checkbox1"></label>
-                                                                                </span>
-                                                                      </td>
-                                                                      <td> </td>
-                                                                      <td></td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td>
-                                                                                <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                                      </td>
+	    </tr>
+			<!--
+	    <tr>
+		    <td>
+          <span class="custom-checkbox">
+              <input type="checkbox" id="checkbox2" name="options[]" value="2">
+              <label for="checkbox2"></label>
+          </span>
+		    </td>
+		    <td> </td>
+		    <td> </td>
+		    <td> </td>
+		    <td> </td>
+				<td> </td>
+		    <td> </td>
+		    <td> </td>
+		    <td> </td>
+		    <td>
+          <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+		    </td>
 
-                                                            </tr>
-                                                            <tr>
-                                                                      <td>
-                                                                                <span class="custom-checkbox">
-                                                                                          <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                                                          <label for="checkbox1"></label>
-                                                                                </span>
-                                                                      </td>
-                                                                      <td> </td>
-                                                                      <td></td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td> </td>
-                                                                      <td>
-                                                                                <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                                                      </td>
+	    </tr>	-->
 
-                                                            </tr>
 
-                                                  </tbody>
-                                        </table>
+	  </tbody>
+  </table>
                               </div>
 
 
@@ -348,6 +337,8 @@
 <script src="js/waves.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/tabverre.js"></script>
+
 
 </body>
 </html>
