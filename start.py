@@ -128,4 +128,4 @@ def all_verres():
 
 
 
-eel.start('home.html', size=(1000, 600), position=(175, 75))
+eel.start('home.html', size=(1100, 600), position=(175, 75))

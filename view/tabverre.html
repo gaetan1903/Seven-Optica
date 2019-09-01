@@ -62,31 +62,6 @@
 <style type="text/css">
 </style>
 
-<script type="text/javascript">
-          $(document).ready(function(){
-                    // Activate tooltip
-                    $('[data-toggle="tooltip"]').tooltip();
-
-                    // Select/Deselect checkboxes
-                    var checkbox = $('table tbody input[type="checkbox"]');
-                    $("#selectAll").click(function(){
-                              if(this.checked){
-                                        checkbox.each(function(){
-                                                  this.checked = true;
-                                        });
-                              } else{
-                                        checkbox.each(function(){
-                                                  this.checked = false;
-                                        });
-                              }
-                    });
-                    checkbox.click(function(){
-                              if(!this.checked){
-                                        $("#selectAll").prop("checked", false);
-                              }
-                    });
-          });
-          </script>
 
 </head>
 <body>
@@ -149,7 +124,7 @@
 	      <th>Types</th>
 	      <th>Traitements</th>
 	      <th>Dégrés</th>
-	      <th>Quantités</th>
+	      <th>Stocks</th>
 				<th>Dispo</th>
 	      <th>Achats</th>
 	      <th>Ventes</th>
@@ -173,34 +148,11 @@
 				<td id="achat"> </td>
         <td id="vente"> </td>
         <td>
-          <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-          <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+          <a id="" onclick="myModal3(document.getElementById('myModal3').value)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a id="" onclick="deleteEmployeeModal(document.getElementById('deleteEmployeeModal').value)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
         </td>
 
 	    </tr>
-			<!--
-	    <tr>
-		    <td>
-          <span class="custom-checkbox">
-              <input type="checkbox" id="checkbox2" name="options[]" value="2">
-              <label for="checkbox2"></label>
-          </span>
-		    </td>
-		    <td> </td>
-		    <td> </td>
-		    <td> </td>
-		    <td> </td>
-				<td> </td>
-		    <td> </td>
-		    <td> </td>
-		    <td> </td>
-		    <td>
-          <a href="#myModal3" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-          <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-		    </td>
-
-	    </tr>	-->
-
 
 	  </tbody>
   </table>
@@ -214,100 +166,100 @@
 
 
 
-                                <!-- Delete Modal HTML -->
-                              <div id="deleteEmployeeModal" class="modal fade">
-                                        <div class="modal-dialog">
-                                                  <div class="modal-content">
-                                                            <form  action="server.php" method="POST">
-                                                                      <div class="modal-header">
-                                                                                <h4 class="modal-title">Supprimer un produit</h4>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                      </div>
-                                                                      <div class="modal-body">
-                                                                                <p>Voulez-vous vraiment supprimer ce prodruit?</p>
-                                                                                <p class="text-warning"><small>Cette action sera irreversible!</small></p>
-                                                                      </div>
-                                                                      <div class="modal-footer">
-                                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                                                                                <input type="submit" class="btn btn-danger" value="Supprimer">
-                                                                      </div>
-                                                            </form>
-                                                  </div>
-                                        </div>
-                            </div>
+    <!-- Mamafa Modal HTML -->
+  <div id="deleteEmployeeModal" class="modal fade">
+	  <div class="modal-dialog">
+        <div class="modal-content">
+          <form  onsubmit="delete()" >
+            <div class="modal-header">
+                      <h4 class="modal-title">Supprimer un produit</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous vraiment supprimer ce prodruit?</p>
+                <p class="text-warning"><small>Cette action sera irreversible!</small></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                <input type="submit" class="btn btn-danger" value="Supprimer">
+            </div>
+          </form>
+        </div>
+	  </div>
+</div>
 
-                              <div id="myModal2" class="modal fade">
-                                <div class="modal-dialog modal-login" >
-                                  <div class="modal-content" style="margin-top: 10% !important;">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title" style="font-weight: bold;">Ajouter un produit</h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form  onsubmit="ajout()"  action="#">
-                                        <div class="form-group">
-                                          <input type="text" id="atype" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type du verre" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" id="atraitement" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" id="adegre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" id="anombre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" id="aachat" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" id="avente" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <button  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg">Ajouter</button>
-                                        </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+  <div id="myModal2" class="modal fade">
+    <div class="modal-dialog modal-login" >
+      <div class="modal-content" style="margin-top: 10% !important;">
+        <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold;">Ajouter un produit</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">
+          <form  onsubmit="ajout()"  action="#">
+            <div class="form-group">
+              <input type="text" id="atype" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type du verre" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" id="atraitement" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" id="adegre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" id="anombre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" id="aachat" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" id="avente" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
+            </div>
+            <div class="form-group">
+              <button  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-                              <div id="myModal3" class="modal fade">
-                                <div class="modal-dialog modal-login" >
-                                  <div class="modal-content" style="margin-top: 10% !important;">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title" style="font-weight: bold;">Modifier un produit</h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form  method="post">
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                          <input type="submit"  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg" value="Modifier">
-                                        </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+  <div id="myModal3" class="modal fade">
+    <div class="modal-dialog modal-login" >
+      <div class="modal-content" style="margin-top: 10% !important;">
+        <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold;">Modifier un produit</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">
+          <form  method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
+            </div>
+            <div class="form-group">
+              <input type="submit"  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg" value="Modifier">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -338,6 +290,11 @@
 <script src="js/admin.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/tabverre.js"></script>
+
+<script type="text/javascript">
+    $('[data-toggle="tooltip"]').tooltip();
+
+</script>
 
 
 </body>

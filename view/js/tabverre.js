@@ -1,5 +1,5 @@
 $(function(){
-eel.all_verres()(print_all_verre);
+  eel.all_verres()(print_all_verre);
 });
 
 function print_all_verre(verre){
@@ -16,18 +16,38 @@ function print_all_verre(verre){
       vr_clone.find('#traitement').html(verre[i][3]);
       vr_clone.find('#degre').html(verre[i][4]);
       vr_clone.find('#quantite').html(verre[i][5]);
-      vr_clone.find('#disponible').html(verre[i][6]);
+      vr_clone.find('#disponible').html(verre[i][5] - verre[i][6]);
       vr_clone.find('#achat').html(verre[i][7]);
       vr_clone.find('#vente').html(verre[i][8]);
 
-
-      /*
-      $('tbody #'+ verre[i][0] + ' input').attr(id:'checkbox'+verre[i][0], value: verre[i][0]);
-      $('tbody #'+ verre[i][0] + ' label').attr('for', 'checkbox'+ verre[i][0]);
-      $('tbody #'+ verre[i][0] + ' td #reference').html(verre[i][1]);
-    }
-    */
-    vr_clone.appendTo('tbody');
+      vr_clone.find('#myModal3').attr('id', 'mod'+ verre[i][0]);
+      vr_clone.find('#deleteEmployeeModal').attr('id', 'del'+ verre[i][0]);
+      vr_clone.appendTo('tbody');
   }
   vr.remove();
+
+  var checkbox = $('tbody input[type="checkbox"]');
+  $("#selectAll").click(function(){
+            if(this.checked){
+                      checkbox.each(function(){
+                                this.checked = true;
+                      });
+            } else{
+                      checkbox.each(function(){
+                                this.checked = false;
+                      });
+            }
+  });
+  checkbox.click(function(){
+            if(!this.checked){
+                      $("#selectAll").prop("checked", false);
+            }
+  });
+}
+
+
+
+function myModal3(val){
+  $("#myModal3").attr('value', val);
+  $("#myModal3").modal('show');
 }
