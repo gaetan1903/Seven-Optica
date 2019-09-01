@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/stylee.css">
 <link rel="stylesheet" href="css/pharmacie.css">
 
-
+<script type="text/javascript" src="/eel.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/ajouter.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -255,27 +255,27 @@
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
-                                      <form  method="post" id="ajouter_produit">
+                                      <form  onsubmit="ajout()"  action="#">
                                         <div class="form-group">
-                                          <input type="text" id="type" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type" required="required">
+                                          <input type="text" id="atype" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Type du verre" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <input type="text" id="traitement" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
+                                          <input type="text" id="atraitement" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Traitement" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <input type="text" id="degre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
+                                          <input type="text" id="adegre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Dégré" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <input type="text" id="nombre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
+                                          <input type="text" id="anombre" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Nombre" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <input type="text" id="achat" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
+                                          <input type="text" id="aachat" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix d'achat" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <input type="text" id="vente" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
+                                          <input type="text" id="avente" class="form-control" style="border-right: none !important; border-left: none !important; border-top:none !important; font-family: Poppins-Regular !important; font-size: 14px !important;" placeholder="Prix de vente" required="required">
                                         </div>
                                         <div class="form-group">
-                                          <button onclick="ajout()"  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg">Ajouter</button>
+                                          <button  style="border-radius: 25px !important; background-image: linear-gradient(to left,#4cae4c #4cae4c) !important;" class="btn btn-primary btn-block btn-lg">Ajouter</button>
                                         </div>
                                       </form>
                                     </div>
@@ -343,7 +343,7 @@
 	</div>
 </footer>
 
-<script type="text/javascript" src="/eel.js"></script>
+
 <script src="js/controller.js"></script>
 <script src="js/waves.js"></script>
 <script src="js/admin.js"></script>

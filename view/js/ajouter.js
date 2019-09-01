@@ -1,6 +1,8 @@
 function ajout(){
-  eel.ajouter_verre(document.getElementById('type').value, document.getElementById('traitement').value, document.getElementById('degre').value, document.getElementById('nombre').value , document.getElementById('achat').value , document.getElementById('vente').value )(feed_ajout);
-  
+  alert('allo');
+  eel.ajouter_verre(document.getElementById('atype').value, document.getElementById('atraitement').value, document.getElementById('adegre').value, document.getElementById('anombre').value , document.getElementById('aachat').value, document.getElementById('avente').value )(feed_ajout);
+  alert('allo again');
+
 }
 
 

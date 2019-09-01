@@ -87,6 +87,26 @@ def ouvrir(rse):
 
 @eel.expose
 def ajouter_verre(types, traitement, degre, nombre, achat, vente):
-    print(types, traitement, degre, nombre, achat, vente)
+    liaison = model()
+    cursor = liaison.cursor()
+    ref = types[0] + traitement[0]
+    if degre[0] != '(' and degre[-1] != ')':
+        ref = ref + 'c' + str(degre[1:-1]).replace('-', 'm').replace('+', 'p')
+
+    elif degre[0] != '(' and degre[-1] ==')' :
+        dg = degre.split('(')
+        dg[0] = dg[0].replace('-', 'm').replace('+', 'p')
+        dg[1] = dg[1][-1].replace('-', 'm').replace('+', 'p')
+        ref = ref + 't' + '-'.join(dg)
+
+    elif degre[0] == '(' and degre[-1] != ')':
+        ref = ref + degre[1:-1].replace('-', 'm').replace('+', 'p')
+        
+
+    cursor.execute("""
+        INSERT INTO verre(Ref, Type_Verre, Traiter, Degre, Nombre_Stock, Prix_Achat,  Prix_Vente)
+         values(%s, %s, %s, %s, %s, %s, %s);
+    """, ((ref, types, traitement, degre, nombre, achat, vente)) )
+    return True
 
 eel.start('home.html', size=(1000, 600), position=(175, 75))
