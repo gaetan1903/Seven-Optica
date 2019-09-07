@@ -154,12 +154,12 @@ function degre_change(){
     $('#degre-list').html(' ');
     $('#degre-list').append("<option value=''>Choisir degré Sphere</option>");
     for (i=40; i>=0; i--){
-       html = "<option>"+ -i/4 + "</option>";
+       html = "<option>"+ parseFloat(-i/4).toFixed(2) + "</option>";
        $('#degre-list').append(html);
     }
 
     for (i=1; i<41; i++){
-       html = "<option>+"+ i/4 + "</option>";
+       html = "<option>+"+ parseFloat(i/4).toFixed(2) + "</option>";
        $('#degre-list').append(html);
     }
   }
@@ -167,12 +167,12 @@ function degre_change(){
     $('#degre-list').html(' ');
     $('#degre-list').append("<option value=''>Choisir degré Cylindre</option>");
     for (i=40; i>=0; i--){
-       html = "<option>("+ - i/4 + ")</option>";
+       html = "<option>("+  parseFloat(-i/4).toFixed(2) + ")</option>";
        $('#degre-list').append(html);
     }
 
     for (i=1; i<41; i++){
-       html = "<option>(+"+ i/4 + ")</option>";
+       html = "<option>(+"+ parseFloat(i/4).toFixed(2) + ")</option>";
        $('#degre-list').append(html);
     }
 
@@ -185,23 +185,23 @@ function degre_change(){
     for (j=-40;j<40;j++){
       if (j<1){
         for (i=-40;i<1;i++){
-          html = "<option>"+ i/4 + "(" +  j/4 +")</option>";
+          html = "<option>"+ parseFloat(i/4).toFixed(2) + "(" +  parseFloat(j/4).toFixed(2)  +")</option>";
           $('#degre-list').append(html);
         }
 
         for (i=1;i<41;i++){
-          html = "<option>+"+ i/4 + "(" + j/4 +  ")</option>";
+          html = "<option>+"+ parseFloat(i/4).toFixed(2) + "(" + parseFloat(j/4).toFixed(2) +  ")</option>";
           $('#degre-list').append(html);
         }
       }
       else{
         for (i=-40;i<1;i++){
-          html = "<option>"+ i/4 + "(+" +  j/4 +")</option>";
+          html = "<option>"+ parseFloat(i/4).toFixed(2) + "(+" +  parseFloat(j/4).toFixed(2) +")</option>";
           $('#degre-list').append(html);
         }
 
         for (i=1;i<41;i++){
-          html = "<option>+"+ i/4 + "(+" + j/4 +  ")</option>";
+          html = "<option>+"+ parseFloat(i/4).toFixed(2) + "(+" + parseFloat(j/4).toFixed(2) +  ")</option>";
           $('#degre-list').append(html);
         }
       }
