@@ -1,5 +1,5 @@
 # Seven-optica: logiciel de vente
-
+<img align="center" src="https://gaetan1903.github.io/images/projet1.png">
 
 ## Apropos 
 
@@ -34,7 +34,7 @@ Je tiens à remercier @Landry LD as Landris18 pour la contribution du côté fro
 
 
 ## AUTHORS 
- Gaetan Jonathan BAKARY
+ [Gaetan Jonathan BAKARY](https://gaetan1903.github.io)
  
 ## AUTRE 
 Veuillez ce referencize au license avant de cloner ce projet
