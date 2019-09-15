@@ -89,7 +89,6 @@ function myModalf3(val){
 
 
 function myModalValue(tab) {
-  alert(tab[0]);
   $("#myModal3 form").attr('value', tab[0]);
   $("#myModal3 #ref-verre").append("<option selected='selected'>"+ tab[1] +"</option>");
   $("#myModal3 #atype").append("<option selected='selected'>"+ tab[2] +"</option>");
@@ -102,7 +101,7 @@ function myModalValue(tab) {
 }
 
 function modifie(){
-  eel.modifier_verre('verre', $("#myModal3 form").attr('value'), $("#myModal3 #anombre").val(), $("#myModal3 #aachat").val(), $("#myModal3 #avente").val())(modifie_fb);
+  eel.modifier('verre', $("#myModal3 form").attr('value'), $("#myModal3 #anombre").val(), $("#myModal3 #aachat").val(), $("#myModal3 #avente").val())(modifie_fb);
 }
 
 function modifie_fb(response){
@@ -132,8 +131,6 @@ function success_delete(rep){
   else{
     $('#deleteEmployeeModal').modal('hide');
     alert("Une erreur s'est produite")
-
-
   }
 
 }

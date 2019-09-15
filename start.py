@@ -1,5 +1,5 @@
 #-*-coding : utf8 -*-
-import eel, mysql.connector, hashlib, webbrowser
+import eel, mysql.connector, hashlib, webbrowser, re
 from datetime import datetime
 
 eel.init('view')
@@ -129,7 +129,6 @@ def all_verres():
 @eel.expose
 def delete(table, id):
     try:
-
         liaison = model()
         cursor = liaison.cursor()
 
@@ -140,7 +139,10 @@ def delete(table, id):
             liaison.commit()
 
         elif table == 'monture':
-            pass
+            cursor.execute("""
+                DELETE FROM monture WHERE id = %s;
+            """, ((id, )))
+            liaison.commit()
     except:
         return False
     else:
@@ -158,22 +160,100 @@ def select_verre(id):
 
 
 @eel.expose
-def modifier_verre(types, id, nombre, achat, vente):
+def modifier(types, id, nombre, achat, vente):
+    if re.match(r'\d+$', nombre):
+        if re.match(r'\d+$', achat):
+            if re.match(r'\d+$', vente):
+                liaison = model()
+                cursor = liaison.cursor()
+                if types == 'verre':
+                    try:
+                        cursor.execute("""
+                            UPDATE verre SET Nombre_Stock = %s,
+                                Prix_Achat = %s, Prix_Vente = %s
+                                    WHERE  id = %s ;
+                        """, ((nombre, achat, vente, id, )))
+                        liaison.commit()
+
+                    except:
+                        return False
+                    else:
+                        return True
+                elif types == 'monture':
+                    try:
+                        cursor.execute("""
+                            UPDATE monture SET Nombre_Stock = %s,
+                                Prix_Achat = %s, Prix_Vente = %s
+                                    WHERE  id = %s ;
+                        """, ((nombre, achat, vente, id, )))
+                        liaison.commit()
+
+                    except:
+                        return False
+                    else:
+                        return True
+            else:
+                return 'Erreur près de prix de Vente'
+        else:
+            return "Erreur près de prix d'achat"
+    else:
+        return 'Erreur près du nombre entrer'
+
+@eel.expose
+def ajouter_monture(ref, color, forme, nombre, achat, vente):
+    if re.match(r'\d+$', nombre):
+        if re.match(r'\d+$', achat):
+            if re.match(r'\d+$', vente):
+                try:
+                    liaison = model()
+                    cursor = liaison.cursor()
+
+                    cursor.execute("""
+                        SELECT 1 FROM monture WHERE
+                            Ref = %s AND  Couleur = %s AND Forme = %s
+                    """, (ref, color, forme) )
+
+                    if len(cursor.fetchall()) == 0:
+                        cursor.execute("""
+                            INSERT INTO monture(Ref, Couleur, Forme, Nombre_Stock, Prix_Achat, Prix_Vente) VALUES (%s, %s, %s, %s, %s, %s)
+                        """, (ref, color, forme, nombre, achat, vente) )
+                        liaison.commit()
+                        return True
+                    else:
+                        return "Oups, ce donnée semble existé, Peut être devrais vous simplement le modifier"
+                except:
+                    liaison.rollback()
+                    return "Erreur lors de l'insertion "
+            else:
+                return 'Le prix de vente est incorrecte'
+        else:
+            return "Le prix d'achat est incorrecte"
+    else:
+        return 'Le nombre est incorrecte'
+
+
+@eel.expose
+def all_montures():
     liaison = model()
     cursor = liaison.cursor()
-    if types == 'verre':
-        try:
-            cursor.execute("""
-                UPDATE verre SET Nombre_Stock = %s,
-                    Prix_Achat = %s, Prix_Vente = %s
-                        WHERE  id = %s ;
-            """, ((nombre, achat, vente, id, )))
-            liaison.commit()
 
-        except:
-            return False
-        else:
-            return True
+    cursor.execute("""
+        SELECT * FROM monture
+    """)
+    monture = cursor.fetchall()
+    return monture
+
+
+@eel.expose
+def select_monture(id):
+    liaison = model()
+    cursor = liaison.cursor()
+    cursor.execute("""
+            SELECT * FROM monture WHERE id = %s;
+    """, ((id,)))
+    return cursor.fetchone()
+
+
 
 
 eel.start('home.html', size=(1000, 600), position=(175, 75))
