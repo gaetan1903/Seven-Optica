@@ -16,18 +16,18 @@ Electron est un framework permettant de développer des applications multiplatef
 ### La Librairie Eel 
 Eel est une petite bibliothèque Python permettant de créer des applications simples d’interface graphique HTML / JS hors ligne ressemblant à Electron, avec un accès complet aux fonctionnalités et aux bibliothèques Python.
 
-# LANGAGES
+## LANGAGES
 Vu ces outils utilisés, les langages sont donc les suivantes :
   #### 1 - Python
   #### 2 - Javascript 
   #### 3 - HTML 
   #### 4 - CSS
   
-#  CONTRIBUTEURS
+##  CONTRIBUTEURS
 Je tiens à remercier @Landry LD as Landris18 pour la contribution du côté front de ce logicieL.
 
-# AUTHORS 
+## AUTHORS 
  [Gaetan Jonathan BAKARY]
  
-# AUTRE 
+## AUTRE 
 Veuillez ce referencize au license avant de cloner ce projet
