@@ -29,12 +29,13 @@ Vu ces outils utilisés, les langages sont donc les suivantes :
   
   
 ##  CONTRIBUTEURS
-Je tiens à remercier @Landry LD as Landris18 pour la contribution du côté front de ce logicieL.
+Je tiens à remercier [Landry Daniel](https://github.com/Landris18) as "Landris18" pour les petites contributions du côté front de ce logicieL.
 
 
 
 ## AUTHORS 
  [Gaetan Jonathan BAKARY](https://gaetan1903.github.io)
  
+ 
 ## AUTRE 
-Veuillez ce referencize au license avant de cloner ce projet
+Veuillez ce referenciee au [license](https://raw.githubusercontent.com/gaetan1903/Seven-Optica/master/License) avant de cloner ce projet
