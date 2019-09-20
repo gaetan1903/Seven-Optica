@@ -4,7 +4,7 @@ from datetime import datetime
 
 eel.init('view')
 
-usr, liaison = '', ''
+usr= ''
 moisFr = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet' ,'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
 
 def model():
