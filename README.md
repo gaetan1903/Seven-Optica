@@ -29,7 +29,7 @@ Vu ces outils utilisés, les langages sont donc les suivantes :
   
   
 ##  CONTRIBUTEURS
-Je tiens à remercier [Landry Daniel](https://github.com/Landris18) as "Landris18" pour les petites contributions du côté front de ce logicieL.
+Je tiens à remercier [Landry Daniel](https://github.com/Landris18) as "Landris18" pour les contributions du côté front de ce logicieL.
 
 
 
