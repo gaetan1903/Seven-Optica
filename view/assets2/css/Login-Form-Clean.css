@@ -34,7 +34,7 @@
 }
 
 .login-clean form .btn-primary {
-  background: #f4476b !important;
+  background: #fb483a !important;
   border: none;
   border-radius: 50px;
   padding: 11px;
@@ -45,7 +45,7 @@
 }
 
 .login-clean form .btn-primary:hover, .login-clean form .btn-primary:active {
-  background: #eb3b60 !important;
+  background: #f54e43 !important;
 }
 
 .login-clean form .btn-primary:active {
