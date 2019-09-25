@@ -256,4 +256,4 @@ def select_monture(id):
 
 
 
-eel.start('home.html', size=(1000, 600), position=(175, 75))
+eel.start('vente.html', size=(1000, 600), position=(175, 75))
