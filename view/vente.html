@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,9 +54,9 @@
 	<link href="css/style_menu.css" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-	
 
-   	<link rel="stylesheet" href="assets2/css/Login-Form-Clean.css">
+
+	<link rel="stylesheet" href="assets2/css/Login-Form-Clean.css">
 
 </head>
 
@@ -82,7 +82,7 @@
 		</div>
 	</nav>
 
-	
+
 
 	<div class="site-wrap"  >
 		<section>
@@ -90,87 +90,74 @@
 
 				<div class="container">
 
+					<div class="login-clean" style="margin-left:-52.5%; margin-top:-11% !important;">
+						<form id="vente_monture" method="POST">
+							<h4 style="margin-left: 39%; margin-top: -8%; font-weight: normal;">Monture</h4>
+							<div class="form-group">
+								<label style="font-weight: normal;">Référence</label>
+								<select id="reference" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
+								<label style="font-weight: normal;">Couleur</label>
+								<select id="couleur" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-top:-5.6% !important;">
+								<label style="font-weight: normal;">Forme</label>
+								<select id="forme" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.5% !important;">
+								<label style="font-weight: normal;">Nombre</label>
+								<select id="nombre" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary btn-block" type="submit" style="margin-bottom: -10%; margin-top:-3%; border-radius: 50px;">Valider</button>
+							</div>
+						</form>
+					</div>
 
 
-						<div class="login-clean" style="margin-left:-52.5%; margin-top:-11% !important;">
-								<form method="POST">
-									<h4 style="margin-left: 39%; margin-top: -8%; font-weight: normal;">Monture</h4>
-									<div class="form-group">
-										<label style="font-weight: normal;">Référence</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
-										<label style="font-weight: normal;">Couleur</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-top:-5.6% !important;">
-										<label style="font-weight: normal;">Forme</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.5% !important;">
-										<label style="font-weight: normal;">Nombre</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" type="submit" style="margin-bottom: -10%; margin-top:-3%; border-radius: 50px;">Valider</button>
-									</div>
-								</form>
-							    </div>
-							    
-							    
-							    <div class="login-clean" style="margin-left:52.5%; margin-top: -41.6%; margin-bottom: -5%;">
-								<form method="POST">
-									<h4 style="margin-left: 42%; margin-top: -8%; font-weight: normal;">Verre</h4>
-									<div class="form-group">
-										<label style="font-weight: normal;">Type</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
-										<label style="font-weight: normal;">Traitement</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-top:-5.6% !important;">
-										<label style="font-weight: normal;">Dégré</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.5% !important;">
-										<label style="font-weight: normal;">Nombre</label>
-										<select class="form-control">
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" type="submit" style="margin-bottom: -10%; margin-top:-3%; border-radius: 50px;">Valider</button>
-									</div>
-								</form>
-							    </div>
-					
-					
-					
-					
-					
+					<div class="login-clean" style="margin-left:52.5%; margin-top: -41.6%; margin-bottom: -5%;">
+						<form method="POST" id="vente_verre">
+							<h4 style="margin-left: 42%; margin-top: -8%; font-weight: normal;">Verre</h4>
+							<div class="form-group">
+								<label style="font-weight: normal;">Type</label>
+								<select id="type" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
+								<label style="font-weight: normal;">Traitement</label>
+								<select id="traitement" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-top:-5.6% !important;">
+								<label style="font-weight: normal;">Dégré</label>
+								<select id="degre" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.5% !important;">
+								<label style="font-weight: normal;">Nombre</label>
+								<select id="nombre" class="form-control">
+									<option></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary btn-block" type="submit" style="margin-bottom: -10%; margin-top:-3%; border-radius: 50px;">Valider</button>
+							</div>
+						</form>
+					</div>
+
+
 					<div class="table-wrapper" style="margin-top: -7%;">
 						<div class="table-title">
 							<div class="row">
@@ -234,5 +221,8 @@
 				</div>
 			</section>
 		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/tabvente.js"></script>
+	</body>
 
-	</html>
+</html>

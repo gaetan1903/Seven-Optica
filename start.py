@@ -254,6 +254,11 @@ def select_monture(id):
     return cursor.fetchone()
 
 
+@eel.expose
+def all_prodcut():
+    monture = all_montures()
+    verre = all_verres()
 
+    return [monture, verre]
 
 eel.start('home.html', size=(1000, 600), position=(175, 75))
