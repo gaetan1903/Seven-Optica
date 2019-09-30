@@ -9,7 +9,7 @@ function recvProduct(response){
   for (i=0;i<response[0].length;i++){
     $('#vente_monture #reference').append('<option>' + response[0][i][1] + '</option>');
     $('#vente_monture #couleur').append('<option>' + response[0][i][2] + '</option>');
-    $('#vente_monture #forme').append('<option value='+ response[0][i][3] + '>');
+    //$('#vente_monture #forme').append('<option value='+ response[0][i][3] + '>');
   }
   $('#vente_monture #nombre').append('<option>1</option>');
 

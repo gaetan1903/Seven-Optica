@@ -93,30 +93,35 @@
 					<div class="login-clean" style="margin-left:-52.5%; margin-top:-11% !important;">
 						<form id="vente_monture" method="POST">
 							<h4 style="margin-left: 39%; margin-top: -8%; font-weight: normal;">Monture</h4>
+
 							<div class="form-group">
-								<label style="font-weight: normal;">Référence</label>
-								<select id="reference" class="form-control">
-									<option></option>
-								</select>
-							</div>
-							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
-								<label style="font-weight: normal;">Couleur</label>
-								<select id="couleur" class="form-control">
-									<option></option>
-								</select>
-							</div>
-							<div class="form-group" style="margin-top:-5.6% !important;">
-								<label style="font-weight: normal;">Forme</label>
-								<input type='text' class="form-control" list='forme'>
-								<datalist id="forme" class="form-control">
+								<label style="font-weight: normal;">Réference</label>
+								<input type='text' class="form-control" list="reference">
+								<datalist id="reference">
 								</datalist>
 							</div>
+
+							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.7% !important;">
+								<label style="font-weight: normal;">Couleur</label>
+								<input type='text' class="form-control" list="couleur">
+								<datalist id="couleur">
+								</datalist>
+							</div>
+
+							<div class="form-group" style="margin-top:-5.6% !important;">
+								<label style="font-weight: normal;">Forme</label>
+								<input type='text' class="form-control" list="forme">
+								<datalist id="forme">
+								</datalist>
+							</div>
+
 							<div class="form-group" style="margin-left:51%; width:100% !important; margin-top:-20.5% !important;">
 								<label style="font-weight: normal;">Nombre</label>
-								<select id="nombre" class="form-control">
-									<option></option>
-								</select>
+								<input type='text' class="form-control" list="nombre">
+								<datalist id="nombre">
+								</datalist>
 							</div>
+
 							<div class="form-group">
 								<button class="btn btn-primary btn-block" type="submit" style="margin-bottom: -10%; margin-top:-3%; border-radius: 50px;">Valider</button>
 							</div>
