@@ -33,7 +33,8 @@ function recvProduct(response){
 function refChange(obj){
   if (obj == 'reference'){
       var valRef = $("#vente_monture input[list='reference']").val();
-      $('#vente_monture #forme').html('')
+      $('#vente_monture #forme').html('');
+      $("#vente_monture input[list='forme']").val('');
       for (i=0;i<monture_product[0].length;i++){
         if (monture_product[0][i][1] == valRef ){
           $('#vente_monture #forme').append('<option value='+ monture_product[0][i][3] + '>');
@@ -43,6 +44,7 @@ function refChange(obj){
   else if (obj == 'forme'){
     var valRef = $("#vente_monture input[list='reference']").val();
     var valFor = $("#vente_monture input[list='forme']").val();
+    $("#vente_monture input[list='couleur']").val('');
     for (i=0;i<monture_product[0].length;i++){
       if (monture_product[0][i][1] == valRef && monture_product[0][i][3] == valFor){
         $('#vente_monture #couleur').append('<option value='+ monture_product[0][i][2] + '>');
@@ -55,8 +57,8 @@ function refChange(obj){
     var valRef = $("#vente_monture input[list='reference']").val();
     var valFor = $("#vente_monture input[list='forme']").val();
     var valCol = $("#vente_monture input[list='couleur']").val();
+    $("#vente_monture input[list='nombre']").val('');
     for (i=0;i<monture_product[0].length;i++){
-      alert(monture_product[0][i][1] == valRef && monture_product[0][i][3] == valFor && monture_product[0][i][2] == valCol);
       if (monture_product[0][i][1] == valRef && monture_product[0][i][3] == valFor && monture_product[0][i][2] == valCol){
         $('#vente_monture #nombre').html('');
         for (j=1;j<=monture_product[0][i][4];j++){
