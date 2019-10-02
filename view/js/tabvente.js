@@ -70,3 +70,7 @@ function refChange(obj){
 
   }
 }
+
+function addedMon(){
+  
+}
